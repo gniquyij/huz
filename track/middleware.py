@@ -9,4 +9,4 @@ from track.models import Track
 def create(metainfo, release_id, obj=Track):
     object = obj()
     object.get_release_info(release_id)
-    middleware.create(metainfo, object)
+    return middleware.create(metainfo, object)

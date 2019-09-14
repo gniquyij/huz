@@ -1,10 +1,7 @@
 # coding: utf-8
 
-from datetime import datetime
-import os
 import sys
 sys.path.append('..')
-from utils import hzobe
 from prepost.pre import create_table_in_db
 
 

@@ -47,3 +47,10 @@ def insert_data(table_name, col_names, col_values):
     resp = cursor.fetchone()
     conn.commit()
     return resp[0]
+
+
+def update_data(table_name, col_name, col_value, benchmark_col_name, benchmark_col_value):
+    conn = connect()
+    cursor = conn.cursor()
+    cursor.execute("update %s set %s = %s where %s = %s;" % (table_name, col_name, col_value, benchmark_col_name, benchmark_col_value))
+    conn.commit()

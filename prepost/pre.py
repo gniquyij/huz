@@ -22,7 +22,8 @@ def store_src_info(src_path):
     import release.middleware
     release_id, metainfo = release.middleware.create(src_path)
     import track.middleware
-    track.middleware.create(metainfo, release_id)
+    track_id = track.middleware.create(metainfo, release_id)[0]
+    hzopg.update_data('release', 'track_id', track_id, 'id', release_id)
 
 
 def main():
