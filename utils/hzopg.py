@@ -4,7 +4,7 @@ import psycopg2
 import settings
 
 
-# huzopg: huz + psycopg
+# hzopg: huz + psycopg
 
 
 def connect(cmd=settings.HUZ_PSQL_CONNECT_CMD):
@@ -43,5 +43,7 @@ def create_primary_key(cursor, table_name):
 def insert_data(table_name, col_names, col_values):
     conn = connect()
     cursor = conn.cursor()
-    cursor.execute("insert into %s (%s) values %s;" % (table_name, col_names, col_values))
+    cursor.execute("insert into %s (%s) values %s returning id;" % (table_name, col_names, col_values))
+    resp = cursor.fetchone()
     conn.commit()
+    return resp[0]

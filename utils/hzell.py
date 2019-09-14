@@ -3,7 +3,7 @@
 from subprocess import run
 
 
-# huzell: huz + shell
+# hzell: huz + shell
 
 
 def bash_run(cmd):

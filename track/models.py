@@ -1,20 +1,21 @@
 # coding: utf-8
 
+from datetime import datetime
+import os
 import sys
 sys.path.append('..')
-from utils import huzobe
+from utils import hzobe
 from prepost.pre import create_table_in_db
 
 
 @create_table_in_db
 class Track:
     def __init__(self):
+        self.release_id = int
         self.title = str
-        # self.album_id = int
-        # self.artist_id = int
-        import datetime
-        self.created_at = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-    def get_metainfo(self, file_path):
-        metainfo = huzobe.get_metainfo(file_path)
+    def get_release_info(self, release_id):
+        self.release_id = release_id
+
+    def get_metainfo(self, metainfo):
         self.title = metainfo['format']['tags']['title']

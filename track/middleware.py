@@ -3,7 +3,10 @@
 import sys
 sys.path.append('')
 from utils import middleware
+from track.models import Track
 
 
-def create(Track, file_path):
-    middleware.create(Track, file_path)
+def create(metainfo, release_id, obj=Track):
+    object = obj()
+    object.get_release_info(release_id)
+    middleware.create(metainfo, object)

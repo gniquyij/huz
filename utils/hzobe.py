@@ -4,7 +4,7 @@ from subprocess import run
 import json
 
 
-# huzobe: huz + ffprobe
+# hzobe: huz + ffprobe
 
 
 def get_metainfo(filename):
