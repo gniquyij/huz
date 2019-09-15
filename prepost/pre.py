@@ -33,6 +33,7 @@ def main():
     sources = locate_sources()
     for src in sources:
         store_src_info(settings.HUZ_SRC_PATH + '/' + src)
+    hzopg.dump_data_in_json('id, accessed_at, modified_at, changed_at', 'release', "'%s/dbshot.json'" % settings.HUZ_HOME_PATH)
 
 
 if __name__ == '__main__':
