@@ -20,7 +20,7 @@ pip install -r requirements.txt
 
 # install db
 brew install postgresql
-createuser vjyq
+createuser vjyq with superuser
 createdb huz
 
 # install audio solution
@@ -42,7 +42,6 @@ psql -h 127.0.0.1 huz vjyq
 [^1] here i use a clip of 'A-1 \[Rei I]' by 鷺巣詩郎 as the sample track. if any copywriting issues, i would appreciate it if you could contact me.  
 
 ## TODO
-
 - [ ] sample track in ./src
  
 ## author

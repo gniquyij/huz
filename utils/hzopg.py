@@ -62,6 +62,6 @@ def update_data(table_name, col_name, col_value, benchmark_col_name, benchmark_c
 def dump_data_in_json(col_names, table_name, file_path):
     conn = connect()
     cursor = conn.cursor()
-    cursor.execute('copy (select json_agg(t) FROM (SELECT %s from %s) t) to %s;' % (col_names, table_name, file_path))
+    cursor.execute('copy (select json_agg(t) from (select %s from %s) t) to %s;' % (col_names, table_name, file_path))
     conn.commit()
     hzell.bash_run("echo $(cat %s | tr -d '\\n') > %s" % (file_path, file_path))
