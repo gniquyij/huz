@@ -5,7 +5,9 @@ import os
 
 HUZ_HOME_PATH = os.path.dirname(os.path.realpath(__file__))
 HUZ_SRC_PATH = os.path.join(HUZ_HOME_PATH, 'src')
-HUZ_SRC_STAT = {}
+if not os.path.isdir('%s/tmp' % HUZ_HOME_PATH):
+     os.mkdir('%s/tmp' % HUZ_HOME_PATH)
+HUZ_HZONITOR_TMP_PATH = os.path.join(HUZ_HOME_PATH, 'tmp')
 
 
 #####################
