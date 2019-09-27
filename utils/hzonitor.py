@@ -6,9 +6,7 @@ import os
 import sys
 sys.path.append('..')
 import settings
-from utils import hzell, hzopg
-import update.middleware
-
+from utils import hzell
 
 
 def get_stat(src_path):
@@ -38,19 +36,16 @@ def main():
         with open(settings.HUZ_HZONITOR_TMP_PATH + '/dbshot.json') as f:
             dbshot = json.load(f)
             for i in dbshot:
-                last_accessed_at, last_modified_at, last_changed_at = i['accessed_at'], i['modified_at'], i['changed_at']
-                if accessed_at != last_accessed_at:
-                    update.middleware.create(i['id'], 'accessed', accessed_at)
-                    hzopg.update_data('release', 'accessed_at', "'%s'" % accessed_at, 'id', i['id'])
-                    i['accessed_at'] = accessed_at
-                if modified_at != last_modified_at:
-                    update.middleware.create(i['id'], 'modified', modified_at)
-                    hzopg.update_data('release', 'modified_at', "'%s'" % accessed_at, 'id', i['id'])
-                    i['modified_at'] = modified_at
-                if changed_at != last_changed_at:
-                    update.middleware.create(i['id'], 'changed', changed_at)
-                    hzopg.update_data('release', 'changed_at', "'%s'" % changed_at, 'id', i['id'])
-                    i['changed_at'] = changed_at
+                def check_update(stat, field_name, now):
+                    if now != stat[field_name]:
+                        from update.middleware import create
+                        create(stat['id'], field_name, now)
+                        from release.middleware import update   # TODO: import in the beginning?
+                        update(stat['id'], field_name, "'%s'" % now)
+                        stat[field_name] = now
+                check_update(i, 'accessed_at', accessed_at)
+                check_update(i, 'modified_at', modified_at)
+                check_update(i, 'changed_at', changed_at)
         with open(settings.HUZ_HZONITOR_TMP_PATH + '/dbshot.json', 'w') as f:
             json.dump(dbshot, f)
 
