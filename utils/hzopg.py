@@ -2,6 +2,9 @@
 
 import psycopg2
 import settings
+import sys
+sys.path.append('..')
+from utils import hzell
 
 
 # hzopg: huz + psycopg
@@ -54,3 +57,11 @@ def update_data(table_name, col_name, col_value, benchmark_col_name, benchmark_c
     cursor = conn.cursor()
     cursor.execute("update %s set %s = %s where %s = %s;" % (table_name, col_name, col_value, benchmark_col_name, benchmark_col_value))
     conn.commit()
+
+
+def dump_data_in_json(col_names, table_name, file_path):
+    conn = connect()
+    cursor = conn.cursor()
+    cursor.execute('copy (select json_agg(t) from (select %s from %s) t) to %s;' % (col_names, table_name, file_path))
+    conn.commit()
+    hzell.bash_run("echo $(cat %s | tr -d '\\n') > %s" % (file_path, file_path))
