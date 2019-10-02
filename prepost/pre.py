@@ -19,7 +19,13 @@ def store_src_info(src_path):
     release_id, metainfo = release.middleware.create(src_path)
     import track.middleware
     track_id = track.middleware.create(metainfo, release_id)[0]
-    hzopg.update_data('release', 'track_id', track_id, 'id', release_id)
+    import album.middleware
+    album_id = album.middleware.create(metainfo, release_id)[0]
+    import artist.middleware
+    artist_id = artist.middleware.create(metainfo, release_id)[0]
+    release.middleware.update(release_id, 'track_id', track_id)
+    release.middleware.update(release_id, 'album_id', album_id)
+    release.middleware.update(release_id, 'artist_id', artist_id)
 
 
 def main():
