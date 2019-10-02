@@ -8,6 +8,6 @@ wait; echo 'requirements installed'
 cd ${here}/prepost/
 python pre.py
 
-#echo '* * * * * cd '"${here}"'/utils && /Users/yuqing.ji/.pyenv/versions/3.7.1/envs/huz/bin/python hzonitor.py' > crontmp
-#crontab crontmp
-#rm crontmp
+echo '* * * * * cd '"${here}"'/utils && /Users/yuqing.ji/.pyenv/versions/3.7.1/envs/huz/bin/python hzonitor.py' > crontmp
+crontab crontmp
+rm crontmp
