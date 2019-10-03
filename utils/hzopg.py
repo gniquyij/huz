@@ -52,6 +52,15 @@ def insert_data(table_name, col_names, col_values):
     return resp[0]
 
 
+def read_data(table_name, col_name, benchmark_col_name, benchmark_col_value):
+    conn = connect()
+    cursor = conn.cursor()
+    cursor.execute("SELECT %s FROM %s WHERE %s LIKE '%s%s%s';" % (col_name, table_name, benchmark_col_name, '%', benchmark_col_value, '%'))
+    resp = cursor.fetchone()
+    conn.commit()
+    return resp[0]
+
+
 def update_data(table_name, col_name, col_value, benchmark_col_name, benchmark_col_value):
     conn = connect()
     cursor = conn.cursor()
