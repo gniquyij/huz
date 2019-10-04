@@ -10,10 +10,12 @@ from utils import hzopg
 class Stats:
     def __init__(self):
         self.count = int
+        self.duration = str
         self.updated_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-    def get_stats(self):
+    def get_stats(self, dur):
         obj_name = self.__class__.__name__
+        self.duration = dur
         self.count = hzopg.count_data(obj_name[:-5])
 
 
