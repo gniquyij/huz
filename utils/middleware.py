@@ -1,6 +1,6 @@
 # coding: utf-8
 
-from . import hzopg
+from utils import hzopg
 
 
 def create(file_path, obj):
