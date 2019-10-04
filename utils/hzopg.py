@@ -74,3 +74,12 @@ def dump_data_in_json(col_names, table_name, file_path):
     cursor.execute('copy (select json_agg(t) from (select %s from %s) t) to %s;' % (col_names, table_name, file_path))
     conn.commit()
     hzell.bash_run("echo $(cat %s | tr -d '\\n') > %s" % (file_path, file_path))
+
+
+def count_data(table_name, condition_clause=True):
+    conn = connect()
+    cursor = conn.cursor()
+    cursor.execute("SELECT count(*) FROM %s WHERE %s;" % (table_name, condition_clause))
+    resp = cursor.fetchone()
+    conn.commit()
+    return resp[0]
