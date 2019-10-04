@@ -13,7 +13,6 @@ def get_stats(src_path):
     accessed_at = datetime.fromtimestamp(os.stat(src_path).st_atime).strftime("%Y-%m-%dT%H:%M:%S")
     modified_at = datetime.fromtimestamp(os.stat(src_path).st_mtime).strftime("%Y-%m-%dT%H:%M:%S")
     changed_at = datetime.fromtimestamp(os.stat(src_path).st_ctime).strftime("%Y-%m-%dT%H:%M:%S")
-
     return accessed_at, modified_at, changed_at
 
 
