@@ -3,7 +3,8 @@
 import sys
 sys.path.append('..')
 import settings
-from utils import hzell, hzopg, hzonitor
+from recorders import recording
+from utils import hzell, hzopg
 
 
 def create_table_in_db(cls):
@@ -35,8 +36,8 @@ def main():
     sources = hzell.locate_sources()
     for src in sources:
         store_src_info(settings.HUZ_SRC_PATH + '/' + src)
-    hzopg.dump_data_in_json('id, src_path, accessed_at, modified_at, changed_at', 'release', "'%s/dbshot.json'" % settings.HUZ_HZONITOR_TMP_PATH)
-    hzonitor.update_src_stat()
+    hzopg.dump_data_in_json('id, src_path, accessed_at, modified_at, changed_at', 'release', "'%s/dbshot.json'" % settings.HUZ_RECORDING_TMP_PATH)
+    recording.update_src_stat()
 
 
 if __name__ == '__main__':
