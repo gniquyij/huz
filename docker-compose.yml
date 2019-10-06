@@ -8,8 +8,12 @@ services:
         image: 'postgres:11'
         ports:
             - '5432:5432'
+        volumes:
+            - /Users/yuqing.ji/huz:/huz
     main:
         container_name: huz_main
         build: .
 #        depends_on:
 #            - postgres
+        volumes:
+            - /Users/yuqing.ji/huz:/huz
