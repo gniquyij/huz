@@ -29,9 +29,10 @@ brew install ffmpeg
 
 ### setup your track db
 
-1. put your track(s) in one folder [^1]
-2. update HUZ_SRC_PATH in `./settings.py` with the folder path
-3. (in venv) run `bash init.sh`
+1. config your IP address in settings.py: `HUZ_PSQL_HOST = '<ip-address>'`
+2. put your track(s) in one folder [^1]
+3. update HUZ_SRC_PATH in `./settings.py` with the folder path
+4. (in venv) run `bash init.sh`
 
 once done, run the following cmd to find your db. enjoy.
 
