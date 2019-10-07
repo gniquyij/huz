@@ -41,6 +41,10 @@ bash init.sh
 #### Docker
 Dependencies: Docker 2.0.0.3+
 ```
+# Config docker-compose
+# In ./docker-compose.yml, update <huz-path> with the absolute path of huz in your local.
+
+# Init
 cd huz
 bash docker-compose.sh
 ```

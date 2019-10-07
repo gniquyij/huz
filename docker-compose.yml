@@ -9,9 +9,9 @@ services:
         ports:
             - '5432:5432'
         volumes:
-            - /Users/yuqing.ji/huz:/huz
+            - <huz-path>:/huz
     main:
         container_name: huz_main
         build: .
         volumes:
-            - /Users/yuqing.ji/huz:/huz
+            - <huz-path>:/huz
