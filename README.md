@@ -18,7 +18,7 @@ git clone https://github.com/vjyq/huz.git
 
 ### 3. Init
 
-2 init ways: venv and Docker. You could either of them to move on.
+2 init ways: venv and Docker. You could move on with either of them.
 
 #### venv 
 Dependencies: Python 3.7.1+
