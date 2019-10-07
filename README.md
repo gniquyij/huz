@@ -1,6 +1,6 @@
 # huz 
 
-huz \[hʌts] is an open source listening habit tracking tool designed to record/track/analyze your sound listening.
+huz \[hʌts] is an open source listening habit tracking tool designed to record/track/analyze your listening.
 
 ## Installation
 
