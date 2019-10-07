@@ -12,7 +12,6 @@ git clone https://github.com/vjyq/huz.git
 ### 2. Config your info
 1. Put your collections in `./src`[^1], or your could update `HUZ_SRC_PATH` in `./settings.py` with your collection path.
 2. In `./settings.py`, update `<ip-address>` with your IP address.
-3. In venv/docker container, run `bash init.sh`
 
 [^1] Here i use a clip of 'A-1 \[Rei I]' by 鷺巣詩郎 as the sample track. If any copywriting issues, i would appreciate it if you could contact me at yuqing.ji@outlook.com.
 
@@ -34,6 +33,9 @@ createdb huz
 
 # Install audio solution
 brew install ffmpeg
+
+# Init
+bash init.sh
 ```
 
 #### Docker
