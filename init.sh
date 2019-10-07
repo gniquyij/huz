@@ -8,6 +8,7 @@ wait; echo 'requirements installed'
 cd ${here}/prepost/
 python pre.py
 
+/etc/init.d/cron start
 echo '''
 * * * * * cd '"${here}"'/recorders && /usr/local/bin/python recording.py
 @weekly cd '"${here}"'/recorders && /usr/local/bin/python playback.py weekly

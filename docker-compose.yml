@@ -13,7 +13,5 @@ services:
     main:
         container_name: huz_main
         build: .
-#        depends_on:
-#            - postgres
         volumes:
             - /Users/yuqing.ji/huz:/huz
