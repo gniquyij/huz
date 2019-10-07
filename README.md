@@ -1,50 +1,61 @@
 # huz 
 
-\[hʌts]
+huz \[hʌts] is an open source listening habit tracking tool designed to record/track/analyze your listening.
 
-a tool to track your tracks.
+## Installation
 
-## usage
-
-### init
-
-(better to create a python 3.7.1 venv for huz)
-
+### 1. Get huz
 ```
-# get huz 
 git clone https://github.com/vjyq/huz.git
+```
 
-# install py requirements
+### 2. Config your info
+- Put your collections in `./src`[^1], or your could update `HUZ_SRC_PATH` in `./settings.py` with your collection path.
+- In `./settings.py`, update `<ip-address>` with your IP address.
+
+[^1] Here i use a clip of 'A-1 \[Rei I]' by 鷺巣詩郎 as the sample track. If any copywriting issues, i would appreciate it if you could contact me at yuqing.ji@outlook.com.
+
+### 3. Init
+
+2 init ways: venv and Docker. You could move on with either of them.
+
+#### venv 
+Dependencies: Python 3.7.1+
+```
+# Install python requirements
 cd huz
 pip install -r requirements.txt
 
-# install db
-brew install postgresql
-createuser vjyq with superuser
+# Install database
+brew install postgresql   # 11.3
+createuser huzer with superuser
 createdb huz
 
-# install audio solution
+# Install audio solution
 brew install ffmpeg
+
+# Init
+bash init.sh
 ```
 
-### setup your track db
-
-1. put your track(s) in one folder [^1]
-2. update HUZ_SRC_PATH in `./settings.py` with the folder path
-3. (in venv) run `bash init.sh`
-
-once done, run the following cmd to find your db. enjoy.
-
+#### Docker
+Dependencies: Docker 2.0.0.3+
 ```
-psql -h 127.0.0.1 huz vjyq
+cd huz
+bash docker-compose.sh
 ```
 
-[^1] here i use a clip of 'A-1 \[Rei I]' by 鷺巣詩郎 as the sample track. if any copywriting issues, i would appreciate it if you could contact me.  
+## Getting started
+```
+psql -h <ip-address> huz huzer
+```
 
 ## TODO
-
 - [ ] sample release in ./src
- 
-## author
+- [ ] add log
+- [ ] add ut
+- [ ] docker image to hub
 
+
+## Author
 yuqing.ji@outlook.com

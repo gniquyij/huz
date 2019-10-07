@@ -15,8 +15,8 @@ HUZ_RECORDING_TMP_PATH = os.path.join(HUZ_HOME_PATH, 'recorders/tmp')
 #####################
 
 HUZ_PSQL_DB_NAME = 'huz'
-HUZ_PSQL_USER = 'vjyq'
+HUZ_PSQL_USER = 'huzer'
 HUZ_PSQL_PASSWORD = ''
-HUZ_PSQL_HOST = '127.0.0.1'
+HUZ_PSQL_HOST = '<ip-address>'
 HUZ_PSQL_PORT = '5432'
 HUZ_PSQL_CONNECT_CMD = 'dbname=%s user=%s host=%s password=%s' % (HUZ_PSQL_DB_NAME, HUZ_PSQL_USER, HUZ_PSQL_HOST, HUZ_PSQL_PASSWORD)

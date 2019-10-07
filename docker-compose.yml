@@ -1,0 +1,17 @@
+version: '3'
+services:
+    postgres:
+        container_name: huz_postgres
+        environment:
+            - POSTGRES_DB=huz
+            - POSTGRES_USER=huzer
+        image: 'postgres:11'
+        ports:
+            - '5432:5432'
+        volumes:
+            - /Users/yuqing.ji/huz:/huz
+    main:
+        container_name: huz_main
+        build: .
+        volumes:
+            - /Users/yuqing.ji/huz:/huz

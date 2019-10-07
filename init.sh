@@ -8,11 +8,12 @@ wait; echo 'requirements installed'
 cd ${here}/prepost/
 python pre.py
 
+/etc/init.d/cron start
 echo '''
-* * * * * cd '"${here}"'/recorders && /Users/yuqing.ji/.pyenv/versions/3.7.1/envs/huz/bin/python recording.py
-@weekly cd '"${here}"'/recorders && /Users/yuqing.ji/.pyenv/versions/3.7.1/envs/huz/bin/python playback.py weekly
-@monthly cd '"${here}"'/recorders && /Users/yuqing.ji/.pyenv/versions/3.7.1/envs/huz/bin/python playback.py monthly
-@yearly cd '"${here}"'/recorders && /Users/yuqing.ji/.pyenv/versions/3.7.1/envs/huz/bin/python playback.py yearly
+* * * * * cd '"${here}"'/recorders && /usr/local/bin/python recording.py
+@weekly cd '"${here}"'/recorders && /usr/local/bin/python playback.py weekly
+@monthly cd '"${here}"'/recorders && /usr/local/bin/python playback.py monthly
+@yearly cd '"${here}"'/recorders && /usr/local/bin/python playback.py yearly
 ''' > crontmp
 crontab crontmp
 rm crontmp
