@@ -8,12 +8,12 @@ wait; echo 'requirements installed'
 cd ${here}/prepost/
 python pre.py
 
-/etc/init.d/cron start
+/etc/init.d/cron start   # docker entrypoint
 echo '''
-* * * * * cd '"${here}"'/recorders && /usr/local/bin/python recording.py
-@weekly cd '"${here}"'/recorders && /usr/local/bin/python playback.py weekly
-@monthly cd '"${here}"'/recorders && /usr/local/bin/python playback.py monthly
-@yearly cd '"${here}"'/recorders && /usr/local/bin/python playback.py yearly
+* * * * * cd '${here}'/recorders && '$(which python)' recording.py
+@weekly cd '${here}'/recorders && '$(which python)' playback.py weekly
+@monthly cd '${here}'/recorders && '$(which python)' playback.py monthly
+@yearly cd '${here}'/recorders && '$(which python)' playback.py yearly
 ''' > crontmp
 crontab crontmp
 rm crontmp
