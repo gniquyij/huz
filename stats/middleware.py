@@ -2,19 +2,11 @@
 
 import sys
 sys.path.append('..')
-from utils import hzopg
+from utils import hzopg, middleware
 
 
-def create(obj, dur):   # TODO: use create in utils/middleware?
+def create(obj, dur):
     object = obj()
     object.get_stats(dur)
-    table_name = object.__class__.__name__
-    col_names = ''
-    for key in object.__dict__.keys():
-        col_names += '%s, ' % key
-    col_values = ''
-    for value in object.__dict__.values():
-        if value is int:
-            value = 0
-        col_values += "'%s', " % value
+    table_name, col_names, col_values = middleware.get_cls_info(object)
     hzopg.insert_data('%s' % table_name, col_names[:-2], '(%s)' % col_values[:-2])
