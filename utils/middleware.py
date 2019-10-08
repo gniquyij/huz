@@ -3,17 +3,22 @@
 from utils import hzopg
 
 
-def create(file_path, obj):
-    metainfo = obj.get_metainfo(file_path)
-    table_name = obj.__class__.__name__
-    col_names = ''
-    for key in obj.__dict__.keys():
-        col_names += '%s, ' % key
-    col_values = ''
-    for value in obj.__dict__.values():
+def get_cls_info(cls):
+    cls_name = cls.__class__.__name__
+    attr_names = ''
+    for key in cls.__dict__.keys():
+        attr_names += '%s, ' % key
+    attr_values = ''
+    for value in cls.__dict__.values():
         if value is int:
             value = 0
-        col_values += "'%s', " % value
+        attr_values += "'%s', " % value
+    return cls_name, attr_names, attr_values
+
+
+def create(file_path, obj):
+    metainfo = obj.get_metainfo(file_path)
+    table_name, col_names, col_values = get_cls_info(obj)
     if table_name != 'Release':
         title = obj.__dict__['title']
         try:
