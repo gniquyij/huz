@@ -12,8 +12,16 @@ def get_cls_info(cls):
     for value in cls.__dict__.values():
         if value is int:
             value = 0
+        if type(value) is str:
+            value = value.replace("'", '')
         attr_values += "'%s', " % value
     return cls_name, attr_names, attr_values
+
+
+def get_kvalue_from_json(json, kname):
+    if kname in json:
+        return json[kname]
+    return ''
 
 
 def create(file_path, obj):
@@ -21,6 +29,7 @@ def create(file_path, obj):
     table_name, col_names, col_values = get_cls_info(obj)
     if table_name != 'Release':
         title = obj.__dict__['title']
+        title = title.replace("'", '')
         try:
             data = hzopg.read_data(table_name, 'title', 'title', title)
             if title == data:

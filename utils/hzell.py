@@ -15,4 +15,5 @@ def bash_run(cmd):
 
 
 def locate_sources(src_path=settings.HUZ_SRC_PATH):
-    return bash_run('ls %s' % src_path).decode('utf-8').split()
+    sources = bash_run('ls %s' % src_path).decode('utf-8').split('\n')
+    return sources[:-1]
