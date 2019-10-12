@@ -8,7 +8,6 @@ import json
 
 
 def get_metainfo(filename):
-    cmd = 'ffprobe -v quiet -print_format json -show_format -show_streams %s' % filename
+    cmd = 'ffprobe -v quiet -print_format json -show_format -show_streams "%s"' % filename
     process = run(cmd, shell=True, capture_output=True)
-
     return json.loads(process.stdout)
