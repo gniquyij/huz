@@ -8,6 +8,9 @@ services:
         image: 'grafana/grafana'
         ports:
             - '3000:3000'
+        volumes:
+            - <huz-path>/grafana/datasources:/etc/grafana/provisioning/datasources
+            - <huz-path>/grafana/dashboards:/etc/grafana/provisioning/dashboards
     main:
         container_name: huz_main
         build: .

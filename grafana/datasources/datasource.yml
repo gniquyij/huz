@@ -1,0 +1,14 @@
+apiVersion: 1
+
+datasources:
+- name: postgres
+  database: huz
+  jsonData:
+    postgresVersion: 1000
+    sslmode: 'disable'
+  orgId: 1
+  secureJsonData:
+    password: 'password'
+  type: postgres
+  url: 192.168.1.4:5432
+  user: huzer
