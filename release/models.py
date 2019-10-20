@@ -15,7 +15,7 @@ class Release:
         self.accessed_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         self.artist_id = int
         self.changed_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        self.created_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        # self.created_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         self.modified_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         self.src_path = str
         self.track_id = int

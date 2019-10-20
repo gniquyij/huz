@@ -11,9 +11,7 @@ python pre.py
 /etc/init.d/cron start   # docker entrypoint
 echo '''
 * * * * * cd '${here}'/recorders && '$(which python)' recording.py
-@weekly cd '${here}'/recorders && '$(which python)' playback.py weekly
-@monthly cd '${here}'/recorders && '$(which python)' playback.py monthly
-@yearly cd '${here}'/recorders && '$(which python)' playback.py yearly
+* * * * * cd '${here}'/recorders && '$(which python)' playback.py
 ''' > crontmp
 crontab crontmp
 rm crontmp

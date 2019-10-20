@@ -10,12 +10,12 @@ from utils import hzopg
 class Stats:
     def __init__(self):
         self.count = int
-        self.duration = str
+        self.tag = str
         self.updated_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-    def get_stats(self, dur):
+    def get_stats(self, arg):
         obj_name = self.__class__.__name__
-        self.duration = dur
+        self.tag = arg
         self.count = hzopg.count_data(obj_name[:-5])
 
 
@@ -36,4 +36,9 @@ class ArtistStats(Stats):
 
 @create_table_in_db
 class TrackStats(Stats):
+    pass
+
+
+@create_table_in_db
+class UpdateStats(Stats):
     pass
