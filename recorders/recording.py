@@ -32,7 +32,7 @@ def main():
     sources = hzell.locate_sources()
     for src in sources:
         src_path = settings.HUZ_SRC_PATH + '/' + src
-        modified_at, changed_at = get_stats(src_path)
+        accessed_at, modified_at, changed_at = get_stats(src_path)
         with open(settings.HUZ_RECORDING_TMP_PATH + '/dbshot.json') as f:
             dbshot = json.load(f)
             def check_update(stat, field_name, now):
