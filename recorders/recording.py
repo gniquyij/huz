@@ -31,20 +31,21 @@ def main():
     update_src_stat()
     sources = hzell.locate_sources()
     for src in sources:
-        accessed_at, modified_at, changed_at = get_stats(settings.HUZ_SRC_PATH + '/' + src)
+        src_path = settings.HUZ_SRC_PATH + '/' + src
+        modified_at, changed_at = get_stats(src_path)
         with open(settings.HUZ_RECORDING_TMP_PATH + '/dbshot.json') as f:
             dbshot = json.load(f)
+            def check_update(stat, field_name, now):
+                if now != stat[field_name]:
+                    from update.middleware import create
+                    create(stat['id'], field_name, now)
+                    from release.middleware import update   # TODO: import in the beginning?
+                    update(stat['id'], field_name, "'%s'" % now)
+                    stat[field_name] = now
             for i in dbshot:
-                def check_update(stat, field_name, now):
-                    if now != stat[field_name]:
-                        from update.middleware import create
-                        create(stat['id'], field_name, now)
-                        from release.middleware import update   # TODO: import in the beginning?
-                        update(stat['id'], field_name, "'%s'" % now)
-                        stat[field_name] = now
-                check_update(i, 'accessed_at', accessed_at)
-                check_update(i, 'modified_at', modified_at)
-                check_update(i, 'changed_at', changed_at)
+                if i['src_path'] == src_path:
+                    check_update(i, 'modified_at', modified_at)
+                    check_update(i, 'changed_at', changed_at)
         with open(settings.HUZ_RECORDING_TMP_PATH + '/dbshot.json', 'w') as f:
             json.dump(dbshot, f)
 

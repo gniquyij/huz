@@ -22,7 +22,6 @@ class Release:
 
     def get_metainfo(self, file_path):
         self.src_path = file_path
-        self.accessed_at = datetime.fromtimestamp(os.stat(file_path).st_atime).strftime("%Y-%m-%d %H:%M:%S")
         self.modified_at = datetime.fromtimestamp(os.stat(file_path).st_mtime).strftime("%Y-%m-%d %H:%M:%S")
         self.changed_at = datetime.fromtimestamp(os.stat(file_path).st_ctime).strftime("%Y-%m-%d %H:%M:%S")
         return hzobe.get_metainfo(file_path)

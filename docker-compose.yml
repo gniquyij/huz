@@ -12,6 +12,7 @@ services:
       - <huz-path>/grafana/datasources:/etc/grafana/provisioning/datasources
       - <huz-path>/grafana/dashboards:/etc/grafana/provisioning/dashboards
   main:
+    command: bash -c '/etc/init.d/cron start; wait; tail -f /dev/null'
     container_name: huz_main
     build: .
     depends_on:
