@@ -8,7 +8,6 @@ wait; echo 'requirements installed'
 cd ${here}/prepost/
 python pre.py
 
-/etc/init.d/cron start   # docker entrypoint
 echo '''
 * * * * * cd '${here}'/recorders && '$(which python)' recording.py
 * * * * * cd '${here}'/recorders && '$(which python)' playback.py
