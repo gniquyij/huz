@@ -35,7 +35,10 @@ def main():
         hzell.bash_run('python %s' % model)
     sources = hzell.locate_sources()
     for src in sources:
-        store_src_info(settings.HUZ_SRC_PATH + '/' + src)
+        try:
+            store_src_info(settings.HUZ_SRC_PATH + '/' + src)
+        except:
+            continue
     hzopg.dump_data_in_json('id, src_path, accessed_at, modified_at, changed_at', 'release', "'%s/dbshot.json'" % settings.HUZ_RECORDING_TMP_PATH)
     recording.update_src_stat()
 
