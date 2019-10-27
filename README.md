@@ -56,12 +56,5 @@ bash docker-compose.sh
 psql -h <ip-address> huz huzer
 ```
 
-## TODO
-- [ ] sample release in ./src
-- [ ] add log
-- [ ] add ut
-- [ ] docker image to hub
-
-
 ## Author
 yuqing.ji@outlook.com
