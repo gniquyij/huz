@@ -19,6 +19,7 @@ services:
       - postgres
     volumes:
       - <huz-path>:/huz
+#      - <huz-path>:/huz/src
   postgres:
     container_name: huz_postgres
     environment:
@@ -30,3 +31,4 @@ services:
       - '5432:5432'
     volumes:
       - <huz-path>:/huz
+      - <huz-path>/postgres/data:/var/lib/postgresql/data
