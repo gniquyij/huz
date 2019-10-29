@@ -19,7 +19,7 @@ services:
       - postgres
     volumes:
       - <huz-path>:/huz
-#      - <huz-path>:/huz/src
+#      - <huz-src-path>:/huz/src
   postgres:
     container_name: huz_postgres
     environment:
