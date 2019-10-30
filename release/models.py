@@ -17,6 +17,7 @@ class Release:
         self.changed_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         # self.created_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         self.modified_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        self.playcount = int
         self.src_path = str
         self.track_id = int
 

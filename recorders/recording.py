@@ -41,6 +41,8 @@ def main():
                     create(stat['id'], field_name, now)
                     from release.middleware import update   # TODO: import in the beginning?
                     update(stat['id'], field_name, "'%s'" % now)
+                    if field_name == 'changed_at':
+                        update(stat['id'], 'playcount', 'playcount + 1')
                     stat[field_name] = now
             for i in dbshot:
                 if i['src_path'] == src_path:
