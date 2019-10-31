@@ -9,6 +9,7 @@ import utils.middleware
 @create_table_in_db
 class Album:
     def __init__(self):
+        self.playcount = int
         self.release_id = int
         self.title = str
 

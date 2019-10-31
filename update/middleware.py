@@ -5,7 +5,7 @@ sys.path.append('')
 from utils import hzopg
 
 
-def create(release_id, action, updated_at):
+def create_update(release_id, action, updated_at):
     update = {
         'release_id': release_id,
         'action': action,

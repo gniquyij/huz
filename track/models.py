@@ -10,6 +10,7 @@ import utils.middleware
 class Track:
     def __init__(self):
         # self.genre = str
+        self.playcount = int
         self.release_id = int
         self.title = str
 

@@ -16,17 +16,17 @@ def create_table_in_db(cls):
 
 
 def store_src_info(src_path):
-    import release.middleware
-    release_id, metainfo = release.middleware.create(src_path)
-    import track.middleware
-    track_id = track.middleware.create(metainfo, release_id)[0]
-    import album.middleware
-    album_id = album.middleware.create(metainfo, release_id)[0]
-    import artist.middleware
-    artist_id = artist.middleware.create(metainfo, release_id)[0]
-    release.middleware.update(release_id, 'track_id', track_id)
-    release.middleware.update(release_id, 'album_id', album_id)
-    release.middleware.update(release_id, 'artist_id', artist_id)
+    from release.middleware import create_release, update_release
+    release_id, metainfo = create_release(src_path)
+    from track.middleware import create_track
+    track_id = create_track(metainfo, release_id)[0]
+    from album.middleware import create_album
+    album_id = create_album(metainfo, release_id)[0]
+    from artist.middleware import create_artist
+    artist_id = create_artist(metainfo, release_id)[0]
+    update_release(release_id, 'track_id', track_id)
+    update_release(release_id, 'album_id', album_id)
+    update_release(release_id, 'artist_id', artist_id)
 
 
 def main():

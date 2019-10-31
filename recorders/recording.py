@@ -37,12 +37,18 @@ def main():
             dbshot = json.load(f)
             def check_update(stat, field_name, now):
                 if now != stat[field_name]:
-                    from update.middleware import create
-                    create(stat['id'], field_name, now)
-                    from release.middleware import update   # TODO: import in the beginning?
-                    update(stat['id'], field_name, "'%s'" % now)
+                    from update.middleware import create_update
+                    create_update(stat['id'], field_name, now)
+                    from release.middleware import update_release   # TODO: import in the beginning?
+                    update_release(stat['id'], field_name, "'%s'" % now)
                     if field_name == 'changed_at':
-                        update(stat['id'], 'playcount', 'playcount + 1')
+                        update_release(stat['id'], 'playcount', 'playcount + 1')
+                        from album.middleware import update_album
+                        update_album(stat['id'], 'playcount', 'playcount + 1')
+                        from artist.middleware import update_artist
+                        update_artist(stat['id'], 'playcount', 'playcount + 1')
+                        from track.middleware import update_track
+                        update_track(stat['id'], 'playcount', 'playcount + 1')
                     stat[field_name] = now
             for i in dbshot:
                 if i['src_path'] == src_path:

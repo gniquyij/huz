@@ -2,7 +2,7 @@
 
 import sys
 sys.path.append('..')
-import stats.middleware
+from stats.middleware import create_stats
 from stats.models import AlbumStats
 from stats.models import ArtistStats
 from stats.models import UpdateStats
@@ -11,11 +11,11 @@ from stats.models import TrackStats
 
 
 def main():
-    stats.middleware.create(ReleaseStats, 'ReleaseCount')
-    stats.middleware.create(AlbumStats, 'AlbumCount')
-    stats.middleware.create(ArtistStats, 'ArtistCount')
-    stats.middleware.create(TrackStats, 'TrackCount')
-    stats.middleware.create(UpdateStats, 'UpdateCount')
+    create_stats(ReleaseStats, 'ReleaseCount')
+    create_stats(AlbumStats, 'AlbumCount')
+    create_stats(ArtistStats, 'ArtistCount')
+    create_stats(TrackStats, 'TrackCount')
+    create_stats(UpdateStats, 'UpdateCount')
 
 
 if __name__ == '__main__':

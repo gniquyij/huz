@@ -5,7 +5,7 @@ sys.path.append('..')
 from utils import hzopg, middleware
 
 
-def create(obj, tag):
+def create_stats(obj, tag):
     object = obj()
     object.get_stats(tag)
     table_name, col_names, col_values = middleware.get_cls_info(object)
