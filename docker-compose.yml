@@ -17,6 +17,8 @@ services:
     build: .
     depends_on:
       - postgres
+    extra_hosts:
+       - outside:172.17.0.1
     volumes:
       - <huz-path>:/huz
 #      - <huz-src-path>:/huz/src

@@ -10,5 +10,5 @@ datasources:
   secureJsonData:
     password: 'password'
   type: postgres
-  url: <HUZ_PSQL_HOST>:5432
+  url: 172.17.0.1:5432
   user: huzer
