@@ -23,6 +23,8 @@ def create_table(table_name, headers):
             headers[k] = 'integer'
         elif v == datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"):
             headers[k] = 'timestamp'
+        elif v is 'array':
+            headers[k] = 'int[]'
     statement = ''
     for k, v in headers.items():
         piece = k + ' ' + v + ', '

@@ -9,6 +9,7 @@ def get_cls_info(cls):
     for key in cls.__dict__.keys():
         attr_names += '%s, ' % key
     attr_values = ''
+    # print('@@@', cls.__dict__.values())
     for value in cls.__dict__.values():
         if value is int:
             value = 0
@@ -33,7 +34,9 @@ def create(file_path, obj):
         try:
             data = hzopg.read_data(table_name, 'title', 'title', title)
             if title == data:
-                return hzopg.read_data(table_name, 'id', 'title', data), metainfo
+                id = hzopg.read_data(table_name, 'id', 'title', data)
+                release_ids = obj.__dict__['release_ids']
+                return hzopg.update_data('%s' % table_name, 'release_ids', "release_ids || '%s'" % release_ids, 'id', id), metainfo
         except TypeError:   # TODO: when init, no data then "TypeError: 'NoneType' object is not subscriptable"
             pass
     return hzopg.insert_data('%s' % table_name, col_names[:-2], '(%s)' % col_values[:-2]), metainfo
