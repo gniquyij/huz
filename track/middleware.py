@@ -13,4 +13,4 @@ def create_track(metainfo, release_id, obj=Track):
 
 
 def update_track(id, field_name, field_value):
-    return hzopg.update_data('track', field_name, field_value, 'release_id', id)
+    return hzopg.update_data('track', field_name, field_value, id, 'any(release_ids)')

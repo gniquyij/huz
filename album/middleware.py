@@ -13,4 +13,4 @@ def create_album(metainfo, release_id, obj=Album):
 
 
 def update_album(id, field_name, field_value):
-    return hzopg.update_data('album', field_name, field_value, 'release_id', id)
+    return hzopg.update_data('album', field_name, field_value, id, 'any(release_ids)')

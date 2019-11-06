@@ -13,4 +13,4 @@ def create_artist(metainfo, release_id, obj=Artist):
 
 
 def update_artist(id, field_name, field_value):
-    return hzopg.update_data('artist', field_name, field_value, 'release_id', id)
+    return hzopg.update_data('artist', field_name, field_value, id, 'any(release_ids)')
