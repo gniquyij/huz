@@ -9,7 +9,6 @@ def get_cls_info(cls):
     for key in cls.__dict__.keys():
         attr_names += '%s, ' % key
     attr_values = ''
-    # print('@@@', cls.__dict__.values())
     for value in cls.__dict__.values():
         if value is int:
             value = 0
