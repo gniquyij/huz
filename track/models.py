@@ -2,7 +2,7 @@
 
 import sys
 sys.path.append('..')
-from prepost.pre import create_table_in_db
+from bin.init import create_table_in_db
 import utils.middleware
 
 

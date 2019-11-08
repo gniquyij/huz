@@ -5,7 +5,7 @@ import os
 import sys
 sys.path.append('..')
 from utils import hzobe
-from prepost.pre import create_table_in_db
+from bin.init import create_table_in_db
 
 
 @create_table_in_db

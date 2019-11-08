@@ -1,5 +1,6 @@
 # coding: utf-8
 
+import click
 import sys
 sys.path.append('..')
 import settings
@@ -29,19 +30,30 @@ def store_src_info(src_path):
     update_release(release_id, 'artist_id', artist_id)
 
 
-def main():
-    models = hzell.bash_run('find %s -name "models.py"' % settings.HUZ_HOME_PATH).decode('utf-8').split()
-    for model in models:
-        hzell.bash_run('python %s' % model)
-    sources = hzell.locate_sources()
-    for src in sources:
-        try:
-            store_src_info(settings.HUZ_SRC_PATH + '/' + src)
-        except:
-            continue
+@click.group()
+def cli():
+    pass
+
+
+@cli.command(help='init/update the database of huz')
+@click.option('--option', type=click.Choice(['all', 'src']))
+@click.argument('keyword', required=False)
+def main(option, keyword=None):
+    if option == 'src':
+        store_src_info(settings.HUZ_SRC_PATH + '/' + str(keyword))
+    else:
+        models = hzell.bash_run('find %s -name "models.py"' % settings.HUZ_HOME_PATH).decode('utf-8').split()
+        for model in models:
+            hzell.bash_run('python %s' % model)
+        sources = hzell.locate_sources()
+        for src in sources:
+            try:
+                store_src_info(settings.HUZ_SRC_PATH + '/' + src)
+            except:
+                continue
     hzopg.dump_data_in_json('id, src_path, accessed_at, modified_at, changed_at', 'release', "'%s/dbshot.json'" % settings.HUZ_RECORDING_TMP_PATH)
     recording.update_src_stat()
 
 
 if __name__ == '__main__':
-    main()
+    cli()
