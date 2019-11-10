@@ -95,7 +95,7 @@ admin/admin is the default account/password
 
 or just access the database:
 ```
-psql -h 127.0.0.1 -p 5432 huz huzer   # 'password' is the db password in default
+psql -h 127.0.0.1 -p 5432 huz huzer   # 'password' is the default db password
 ```
 
 ## Author
