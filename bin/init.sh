@@ -9,8 +9,8 @@ cd ${here}
 python init.py main all
 
 echo '''
-* * * * * cd '${here}'/../recorders && '$(which python)' recording.py
-* * * * * cd '${here}'/../recorders && '$(which python)' playback.py
+*/10 * * * * cd '${here}'/../recorders && '$(which python)' recording.py
+*/10 * * * * cd '${here}'/../recorders && '$(which python)' playback.py
 ''' > crontmp
 crontab crontmp
 rm crontmp
