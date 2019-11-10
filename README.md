@@ -1,6 +1,6 @@
 # huz 
 
-<img src='https://github.com/vjyq/huz/blob/master/huz-logo-v4.png?raw=true'>
+<img src='https://github.com/vjyq/huz/blob/master/huz-2019-11-10-v1.jpg?raw=true'>
 
 huz \[hʌts] is an open source listening habit tracking tool designed to record/track/analyze your listening.
 
