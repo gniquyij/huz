@@ -91,7 +91,7 @@ bash init.sh
 
 http://127.0.0.1:3000
 
-or just enter the database:
+or just access the database:
 ```
 psql -h <your-IP-address> -p 5432 huz huzer
 ```
