@@ -88,7 +88,13 @@ bash init.sh
 ```
 
 ## Getting started
+
 http://127.0.0.1:3000
+
+or just enter the database:
+```
+psql -h <your-IP-address> -p 5432 huz huzer
+```
 
 ## Author
 yuqing.ji@outlook.com
