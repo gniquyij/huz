@@ -15,8 +15,15 @@ services:
     command: bash -c '/etc/init.d/cron start; wait; tail -f /dev/null'
     container_name: huz_main
     build: .
+    cap_add:
+      - SYS_ADMIN
+    devices:
+      - /dev/fuse
     depends_on:
       - postgres
+    environment:
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
     extra_hosts:
        - outside:172.17.0.1
     volumes:
