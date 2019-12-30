@@ -33,6 +33,36 @@ cd huz
 bash docker-compose.sh
 ```
 
+My audio files in the cloud?
+
+If the audio files are stored in s3, you could follow the steps herein to mount your S3 bucket in huz:
+
+export the following environment variables
+```
+export AWS_ACCESS_KEY_ID=<YOUR_AWS_ACCESS_KEY_ID>
+export AWS_SECRET_ACCESS_KEY=<YOUR_AWS_SECRET_ACCESS_KEY>
+```
+
+then comment back the the following scripts:
+in `./docker-compose.yml`
+```
+#    cap_add:
+#      - SYS_ADMIN
+#    devices:
+#      - /dev/fuse
+...
+#    environment:
+#      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+#      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+```
+in `./bin/init.sh`
+```
+#apt install -y s3fs
+#echo ${AWS_ACCESS_KEY_ID}:${AWS_SECRET_ACCESS_KEY} > /etc/passwd-s3fs
+#chmod 600 /etc/passwd-s3fs
+#s3fs huz ${here}/../src -o passwd_file=/etc/passwd-s3fs -o nonempty -o url=https://s3-ap-northeast-1.amazonaws.com
+```
+
 #### venv 
 
 Dependencies: Python 3.7.1+
