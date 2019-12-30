@@ -39,8 +39,8 @@ If the audio files are stored in s3, you could follow the steps herein to mount 
 
 export the following environment variables
 ```
-#export AWS_ACCESS_KEY_ID=<YOUR_AWS_ACCESS_KEY_ID>
-#export AWS_SECRET_ACCESS_KEY=<YOUR_AWS_SECRET_ACCESS_KEY>
+export AWS_ACCESS_KEY_ID=<YOUR_AWS_ACCESS_KEY_ID>
+export AWS_SECRET_ACCESS_KEY=<YOUR_AWS_SECRET_ACCESS_KEY>
 ```
 
 then comment back the the following scripts:
