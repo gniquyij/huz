@@ -128,6 +128,10 @@ or just access the database:
 psql -h 127.0.0.1 -p 5432 huz huzer   # 'password' is the default db password
 ```
 
+## huz in cloud (WIP)
+
+https://github.com/vjyq/huz-cloud/
+
 ## Author
 
 yuqing.ji@outlook.com
